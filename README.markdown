@@ -14,50 +14,50 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 
 Gems:
-diff-lcs (1.1.3)
-rake (0.9.2)
-rspec (2.7.0)
-rspec-core (2.7.1)
-rspec-expectations (2.7.0)
-rspec-mocks (2.7.0)
+	diff-lcs (1.1.3)
+	rake (0.9.2)
+	rspec (2.7.0)
+	rspec-core (2.7.1)
+	rspec-expectations (2.7.0)
+	rspec-mocks (2.7.0)
 
 
 Execution:
-cd to GOL directory
-irb -r './cell.rb' -r './universe.rb'
+	cd to GOL directory
+	irb -r './cell.rb' -r './universe.rb'
 
-Copy and paste one of the following example seeds:
+	Copy and paste one of the following example seeds:
 
-"Toad"
-universe = Universe.new
-@cells = []
-cell1 = Cell.new(universe,-1,0)
-cell2 = Cell.new(universe,0,0)
-cell3 = Cell.new(universe,0,1)
-cell4 = Cell.new(universe,1,0)
-cell5 = Cell.new(universe,1,1)
-cell6 = Cell.new(universe,2,1)
-@cells << cell1 << cell2 << cell3 << cell4 << cell5 << cell6
+	"Toad"
+		universe = Universe.new
+		@cells = []
+		cell1 = Cell.new(universe,-1,0)
+		cell2 = Cell.new(universe,0,0)
+		cell3 = Cell.new(universe,0,1)
+		cell4 = Cell.new(universe,1,0)
+		cell5 = Cell.new(universe,1,1)
+		cell6 = Cell.new(universe,2,1)
+		@cells << cell1 << cell2 << cell3 << cell4 << cell5 << cell6
 
 
-"Blinker"
-universe = Universe.new
-@cells = []
-cell1 = Cell.new(universe,0,0)
-cell2 = Cell.new(universe,0,1)
-cell3 = Cell.new(universe,0,-1)
-@cells << cell1 << cell2 << cell3
+	"Blinker"
+		universe = Universe.new
+		@cells = []
+		cell1 = Cell.new(universe,0,0)
+		cell2 = Cell.new(universe,0,1)
+		cell3 = Cell.new(universe,0,-1)
+		@cells << cell1 << cell2 << cell3
 
-"Beacon"
-universe = Universe.new
-@cells = []
-cell1 = Cell.new(universe,0,0)
-cell2 = Cell.new(universe,0,1)
-cell3 = Cell.new(universe,1,1)
-cell4 = Cell.new(universe,2,-2)
-cell5 = Cell.new(universe,3,-1)
-cell6 = Cell.new(universe,3,-2)
-@cells << cell1 << cell2 << cell3 << cell4 << cell5 << cell6
+	"Beacon"
+		universe = Universe.new
+		@cells = []
+		cell1 = Cell.new(universe,0,0)
+		cell2 = Cell.new(universe,0,1)
+		cell3 = Cell.new(universe,1,1)
+		cell4 = Cell.new(universe,2,-2)
+		cell5 = Cell.new(universe,3,-1)
+		cell6 = Cell.new(universe,3,-2)
+		@cells << cell1 << cell2 << cell3 << cell4 << cell5 << cell6
 
 
 When you've seeded the universe with the above call "universe.evolve!" to watch the rules take effect.
