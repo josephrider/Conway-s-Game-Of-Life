@@ -23,8 +23,9 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 
 	Execution:
-		cd to GOL directory
-			irb -r './cell.rb' -r './universe.rb'
+	cd to GOL directory
+	
+		irb -r './cell.rb' -r './universe.rb'
 
 Copy and paste one of the following example seeds:
 
