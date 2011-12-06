@@ -13,20 +13,20 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 
 
-Gems:
-	diff-lcs (1.1.3)
-	rake (0.9.2)
-	rspec (2.7.0)
-	rspec-core (2.7.1)
-	rspec-expectations (2.7.0)
-	rspec-mocks (2.7.0)
+	Gems:
+		diff-lcs (1.1.3)
+		rake (0.9.2)
+		rspec (2.7.0)
+		rspec-core (2.7.1)
+		rspec-expectations (2.7.0)
+		rspec-mocks (2.7.0)
 
 
 Execution:
 	cd to GOL directory
-	irb -r './cell.rb' -r './universe.rb'
+		irb -r './cell.rb' -r './universe.rb'
 
-	Copy and paste one of the following example seeds:
+Copy and paste one of the following example seeds:
 
 	"Toad"
 		universe = Universe.new
