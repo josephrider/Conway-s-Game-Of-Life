@@ -22,8 +22,8 @@ The initial pattern constitutes the seed of the system. The first generation is 
 		rspec-mocks (2.7.0)
 
 
-	Execution:
-	cd to GOL directory
+Execution:
+cd to GOL directory
 	
 		irb -r './cell.rb' -r './universe.rb'
 
