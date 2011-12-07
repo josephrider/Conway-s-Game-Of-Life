@@ -15,12 +15,12 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 Gems:
 
-		diff-lcs (1.1.3)
-		rake (0.9.2)
-		rspec (2.7.0)
-		rspec-core (2.7.1)
-		rspec-expectations (2.7.0)
-		rspec-mocks (2.7.0)
+	diff-lcs (1.1.3)
+	rake (0.9.2)
+	rspec (2.7.0)
+	rspec-core (2.7.1)
+	rspec-expectations (2.7.0)
+	rspec-mocks (2.7.0)
 
 
 Setup:
@@ -34,7 +34,7 @@ cd to the cloned GOL directory
 
 Change your program path in boot.rb to point to your GOL folder:
 
-		rot:GOL rot$> mate ./boot.rb
+	rot:GOL rot$> mate ./boot.rb
 
 		#update your code path here
 		$path = '/Users/rot/projects/GOL'
