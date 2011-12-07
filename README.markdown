@@ -30,17 +30,17 @@ Setup:
 Execution:
 cd to GOL directory
 	
-	Launch interactive ruby with two required files:
+Launch interactive ruby with two required files:
 		
 		irb -r './star.rb' -r './universe.rb'
 
 Constellations.rb methods are available to universe.
 
-	First create a universe:
+First create a universe:
 
 		universe = Universe.new
 
-	Add constellations to the universe we just created at the specified grid point(s):
+Add constellations to the universe we just created at the specified grid point(s):
 
 		universe.toad_at(3,3)
 		universe.blinker_at(-5,-5)
