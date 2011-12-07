@@ -43,31 +43,31 @@ You can also adjust the constant values for the ROWs and COLs to create a bigger
 
 Launch interactive ruby with the boot.rb file:
 		
-		irb -r './boot.rb'
+	irb -r './boot.rb'
 
 Constellations.rb methods are available to universe.
 
 First create a universe:
 
-		universe = Universe.new
+	universe = Universe.new
 
 Add constellations to the universe we just created at the specified grid point(s):
 
-		universe.toad_at(3,3)
-		universe.blinker_at(-5,-5)
-		universe.beacon_at(5,5)
+	universe.toad_at(3,3)
+	universe.blinker_at(-5,-5)
+	universe.beacon_at(5,5)
 
 When you've seeded the universe with the above you can call the following method to evolve the universe once:
 
-		universe.evolve!
+	universe.evolve!
 
 To view the formatted results of the stars in the universe call:
 
-		universe.probe
+	universe.probe
 
 The fun part... to watch the universe evolve on its own call:
 
-		universe.monitor
+	universe.monitor
 		
 The constellations you create interact with each other, the more constellations, the more interactive the evolution.
 The above listed constellations and seed points evolve for the first few cycles then stabilize. 
