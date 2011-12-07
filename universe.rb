@@ -1,39 +1,33 @@
-ROWS = 12
-COLUMNS = 36
-
-# pre-populate the field with random cells with this density
-DENSITY = 0.12
-
-# speed of evolution (in frames per second)
-FPS = 3
-
-# generate a random field
-$field = (0...ROWS).map{ |x| (0...COLUMNS).map{ |y| rand < DENSITY } }
+require "#{$path}/constants.rb"
+require "#{$path}/constellations.rb"
 
 class Universe
-  attr_accessor :cells
+  attr_accessor :stars
+
+  include Constellations
+
 
   def initialize
-    @cells = []    
+    @stars = []    
   end
   
   def probe
     output = ""
-    cells.each_with_index do |r,index|
-      output << "cell#{index}:\n\tx:#{r.x}\n\ty:#{r.y}\n"
+    stars.each_with_index do |r,index|
+      output << "star#{index}:\n\tx:#{r.x}\n\ty:#{r.y}\n"
     end
     puts "#{output}"
   end
   
   def uniq!
-    @results = @cells.dup
-    while @cells.count > 0
-      cell = @cells.shift
-      @cells.each_with_index do |c,index|
-        (c == cell) ? (@results[index] = nil) : false
+    @results = @stars.dup
+    while @stars.count > 0
+      star = @stars.shift
+      @stars.each_with_index do |c,index|
+        (c == star) ? (@results[index] = nil) : false
       end
     end
-    self.cells = @results.reject { |x| x.nil? }
+    self.stars = @results.reject { |x| x.nil? }
   end
   
   def evolve!
@@ -42,48 +36,48 @@ class Universe
   
   def transform_life
     @universe = self
-    #dup the cells before transformation   
-    rule1 = cells.dup
-    rule3 = cells.dup
-    rule4 = cells.dup
+    #dup the stars before transformation   
+    rule1 = stars.dup
+    rule3 = stars.dup
+    rule4 = stars.dup
     #initialize some holders
     @rr1 = []
     @rr3 = []
     @rr4 = []
-    #cells with fewer than 2 peers die
-    rule1.each do |cell|
-      if cell.peers(@universe).count < 2
-        @rr1 << cell
+    #stars with fewer than 2 peers die
+    rule1.each do |star|
+      if star.peers(@universe).count < 2
+        @rr1 << star
       end
     end
-    #cells with greater than 3 peers die
-    rule3.each do |cell|
-      if cell.peers(@universe).count > 3
-        @rr3 << cell
+    #stars with greater than 3 peers die
+    rule3.each do |star|
+      if star.peers(@universe).count > 3
+        @rr3 << star
       end
     end
-    #cells that are dead that have exactly 3 peers come to life
-    rule4.each do |cell|
-      cell.possible_peers.each do |q|
-        if !@universe.cells.include?(q)
+    #stars that are dead that have exactly 3 peers come to life
+    rule4.each do |star|
+      star.possible_peers.each do |q|
+        if !@universe.stars.include?(q)
           @new_universe = nil
           @new_universe = Universe.new                  
-          @universe.cells.each do |c|
-            Cell.new(@new_universe,c.x,c.y)
+          @universe.stars.each do |c|
+            Star.new(@new_universe,c.x,c.y)
           end          
-          z = Cell.new(@new_universe,q.x,q.y)
+          z = Star.new(@new_universe,q.x,q.y)
           if z.peers(@new_universe).count == 3
             @rr4 << z.dup unless @rr4.include?(z)
           end
         end
       end
     end
-    #insert the alternate universe cells into our universe
+    #insert the alternate universe stars into our universe
     @rr4.each do |r|
-      Cell.new(@universe,r.x,r.y)
+      Star.new(@universe,r.x,r.y)
     end
-    #subtract the cells that should be dead
-    self.cells = @universe.cells - @rr1 - @rr3
+    #subtract the stars that should be dead
+    self.stars = @universe.stars - @rr1 - @rr3
     #make sure they are unique
     self.uniq!
   end
@@ -91,8 +85,8 @@ class Universe
   def render_existence
     (-12...ROWS).each do |row|
       (-36...COLUMNS).each do |col|
-          pseudo_cell = Cell.new(Universe.new,row,col)
-          print @cells.include?(pseudo_cell) ? '*' : ' '
+          pseudo_star = Star.new(Universe.new,row,col)
+          print @stars.include?(pseudo_star) ? '*' : ' '
       end
       puts
     end

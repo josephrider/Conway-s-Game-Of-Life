@@ -2,14 +2,14 @@ Reference: http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 Rules
 
-The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square stars, each of which is in one of two possible states, alive or dead. Every star interacts with its eight neighbours, which are the stars that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
 
-    1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
-    2. Any live cell with two or three live neighbours lives on to the next generation.
-    3. Any live cell with more than three live neighbours dies, as if by overcrowding.
-    4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+    1. Any live star with fewer than two live neighbours dies, as if caused by under-population.
+    2. Any live star with two or three live neighbours lives on to the next generation.
+    3. Any live star with more than three live neighbours dies, as if by overcrowding.
+    4. Any dead star with exactly three live neighbours becomes a live star, as if by reproduction.
 
-The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.
+The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every star in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.
 
 
 
@@ -22,44 +22,29 @@ The initial pattern constitutes the seed of the system. The first generation is 
 		rspec-mocks (2.7.0)
 
 
+Setup:
+
+	1. Install the necessary Gems.
+	2. Modify the global path variable to your GOL directory.
+
 Execution:
 cd to GOL directory
 	
-		irb -r './cell.rb' -r './universe.rb'
+	Launch interactive ruby with two required files:
+		
+		irb -r './star.rb' -r './universe.rb'
 
-Copy and paste one of the following example seeds:
+Constellations.rb methods are available to universe.
 
-	"Toad"
+	First create a universe:
+
 		universe = Universe.new
-		@cells = []
-		cell1 = Cell.new(universe,-1,0)
-		cell2 = Cell.new(universe,0,0)
-		cell3 = Cell.new(universe,0,1)
-		cell4 = Cell.new(universe,1,0)
-		cell5 = Cell.new(universe,1,1)
-		cell6 = Cell.new(universe,2,1)
-		@cells << cell1 << cell2 << cell3 << cell4 << cell5 << cell6
 
+	Add constellations to the universe we just created at the specified grid point(s):
 
-	"Blinker"
-		universe = Universe.new
-		@cells = []
-		cell1 = Cell.new(universe,0,0)
-		cell2 = Cell.new(universe,0,1)
-		cell3 = Cell.new(universe,0,-1)
-		@cells << cell1 << cell2 << cell3
-
-	"Beacon"
-		universe = Universe.new
-		@cells = []
-		cell1 = Cell.new(universe,0,0)
-		cell2 = Cell.new(universe,0,1)
-		cell3 = Cell.new(universe,1,1)
-		cell4 = Cell.new(universe,2,-2)
-		cell5 = Cell.new(universe,3,-1)
-		cell6 = Cell.new(universe,3,-2)
-		@cells << cell1 << cell2 << cell3 << cell4 << cell5 << cell6
-
+		universe.toad_at(3,3)
+		universe.blinker_at(-5,-5)
+		universe.beacon_at(5,5)
 
 When you've seeded the universe with the above call:
 
@@ -72,3 +57,6 @@ To view formatted results call:
 To watch the universe evolve on its own call:
 
 		universe.monitor
+		
+The constellations you create interact with each other, the more constellations, the more interactive the evolution.
+The above listed constellations and seed points evolve for the first few cycles then stabilize. 
