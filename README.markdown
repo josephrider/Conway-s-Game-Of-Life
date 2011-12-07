@@ -30,9 +30,11 @@ Setup:
 
 Execution:
 
-cd to GOL directory
+cd to the cloned GOL directory
 
 Change your program path in boot.rb to point to your GOL folder:
+
+		rot:GOL rot$> mate ./boot.rb
 
 		#update your code path here
 		$path = '/Users/rot/projects/GOL'
