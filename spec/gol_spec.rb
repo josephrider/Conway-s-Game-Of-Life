@@ -1,8 +1,112 @@
-require "#{$path}/star.rb"
-require "#{$path}/universe.rb"
+#update your code path here
+$path = '/Users/rot/projects/GOL'
+
+require "#{$path}/boot.rb"
 
 describe "Conway's Game of Life" do
   let(:universe) { Universe.new }
+  
+  context "universe utilities" do
+    
+    describe "evolution" do
+      it "should respond to the evolve! method" do
+        universe.respond_to?(:evolve!)
+      end
+      
+      it "should respond to the transform_life method" do
+        universe.respond_to?(:transform_life)
+      end
+      
+      it "should respond to the probe method" do
+        universe.respond_to?(:probe)
+      end
+      
+      it "should respond to the monitor method" do
+        universe.respond_to?(:monitor)
+      end
+      
+    end
+    
+    describe "toad constellation" do
+      it "should have a toad_at method" do
+        universe.respond_to?(:toad_at)
+      end
+      
+      it "should create the expected number of stars" do
+        expect{
+          universe.toad_at(3,3)
+        }.to change(universe.stars, :count).by(6)
+      end
+      
+      it "should create a toad constellation relative to its initial passed values" do
+        universe.toad_at(3,3)
+        pseudo_universe = Universe.new
+        pseudo_stars = []        
+        pseudo_stars << Star.new(pseudo_universe,3,3)
+        pseudo_stars << Star.new(pseudo_universe,2,3)
+        pseudo_stars << Star.new(pseudo_universe,3,4)
+        pseudo_stars << Star.new(pseudo_universe,4,3)        
+        pseudo_stars << Star.new(pseudo_universe,4,4)                
+        pseudo_stars << Star.new(pseudo_universe,5,4)                        
+        pseudo_stars.each do |star|
+          universe.stars.include?(star)
+        end
+      end
+    end
+    
+    describe "beacon constellation" do
+      it "should have a beacon_at method" do
+        universe.respond_to?(:beacon_at)
+      end
+      
+      it "should create the expected number of stars" do
+        expect{
+          universe.beacon_at(3,3)
+        }.to change(universe.stars, :count).by(6)
+      end
+      
+      it "should create a beacon constellation relative to its initial passed values" do
+        universe.beacon_at(3,3)
+        pseudo_universe = Universe.new
+        pseudo_stars = []        
+        pseudo_stars << Star.new(pseudo_universe,3,3)
+        pseudo_stars << Star.new(pseudo_universe,3,4)
+        pseudo_stars << Star.new(pseudo_universe,4,4)
+        pseudo_stars << Star.new(pseudo_universe,5,1)        
+        pseudo_stars << Star.new(pseudo_universe,6,2)                
+        pseudo_stars << Star.new(pseudo_universe,6,1)                        
+        pseudo_stars.each do |star|
+          universe.stars.include?(star)
+        end
+      end
+    end
+    
+    describe "blinker constellation" do
+      it "should have a blinker_at method" do
+        universe.respond_to?(:blinker_at)
+      end
+      
+      it "should create the expected number of stars" do
+        expect{
+          universe.blinker_at(3,3)
+        }.to change(universe.stars, :count).by(3)
+      end
+      
+      it "should create a blinker constellation relative to its initial passed values" do
+        universe.blinker_at(3,3)
+        pseudo_universe = Universe.new
+        pseudo_stars = []
+        pseudo_stars << Star.new(pseudo_universe,3,3)
+        pseudo_stars << Star.new(pseudo_universe,3,4)
+        pseudo_stars << Star.new(pseudo_universe,3,2)
+        pseudo_stars.each do |star|
+          universe.stars.include?(star)
+        end
+      end
+    end
+    
+  end
+  
   context "star utilities" do
     subject { Star.new(universe) }
     it "should spawn relative to" do
@@ -15,6 +119,10 @@ describe "Conway's Game of Life" do
     
     it "should respond to peers" do
       subject.should respond_to(:peers)
+    end
+    
+    it "should respond to give_life_to" do
+      subject.should respond_to(:give_life_to)
     end
     
     it "should have a peer to the North" do
