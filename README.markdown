@@ -13,7 +13,8 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 
 
-	Gems:
+Gems:
+
 		diff-lcs (1.1.3)
 		rake (0.9.2)
 		rspec (2.7.0)
