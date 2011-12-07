@@ -125,12 +125,12 @@ describe "Conway's Game of Life" do
   describe "Rule: 4 (Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction)" do
     it "should resurrect a dead cell" do
       cell = Cell.new(universe)
-      psuedo_cell = Cell.new(Universe.new,-1,0)
+      pseudo_cell = Cell.new(Universe.new,-1,0)
       first_peer = cell.give_life_to(0,1)
       second_peer = cell.give_life_to(0,-1)
-      !universe.cells.include?(psuedo_cell)
+      !universe.cells.include?(pseudo_cell)
       universe.evolve!
-      universe.cells.include?(psuedo_cell)
+      universe.cells.include?(pseudo_cell)
     end
   end
 

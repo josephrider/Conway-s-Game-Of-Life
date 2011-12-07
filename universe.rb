@@ -1,3 +1,15 @@
+ROWS = 12
+COLUMNS = 36
+
+# pre-populate the field with random cells with this density
+DENSITY = 0.12
+
+# speed of evolution (in frames per second)
+FPS = 3
+
+# generate a random field
+$field = (0...ROWS).map{ |x| (0...COLUMNS).map{ |y| rand < DENSITY } }
+
 class Universe
   attr_accessor :cells
 
@@ -76,6 +88,24 @@ class Universe
     self.uniq!
   end
 
+  def render_existence
+    (-12...ROWS).each do |row|
+      (-36...COLUMNS).each do |col|
+          pseudo_cell = Cell.new(Universe.new,row,col)
+          print @cells.include?(pseudo_cell) ? '*' : ' '
+      end
+      puts
+    end
+  end
+  
+  def monitor
+    loop do
+      sleep(1.0 / FPS.to_f)
+      self.evolve!
+      system('clear')      
+      self.render_existence
+    end
+  end
 
   
 end
