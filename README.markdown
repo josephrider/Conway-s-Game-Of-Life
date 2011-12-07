@@ -28,6 +28,7 @@ Setup:
 	2. Modify the global path variable to your GOL directory.
 
 Execution:
+
 cd to GOL directory
 
 Change your program path in boot.rb to point to your GOL folder:
