@@ -61,8 +61,9 @@ Copy and paste one of the following example seeds:
 		@cells << cell1 << cell2 << cell3 << cell4 << cell5 << cell6
 
 
-When you've seeded the universe with the above call "universe.evolve!" to watch the rules take effect.
-To view formatted results call:
-	universe.probe
-To watch the universe evolve on its own call:
-	universe.monitor
+	When you've seeded the universe with the above call:
+		universe.evolve!
+	To view formatted results call:
+		universe.probe
+	To watch the universe evolve on its own call:
+		universe.monitor
