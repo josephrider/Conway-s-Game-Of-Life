@@ -1,6 +1,3 @@
-require "#{$path}/constants.rb"
-require "#{$path}/constellations.rb"
-
 class Universe
   attr_accessor :stars
 

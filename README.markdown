@@ -29,10 +29,17 @@ Setup:
 
 Execution:
 cd to GOL directory
-	
-Launch interactive ruby with two required files:
+
+Change your program path in boot.rb to point to your GOL folder:
+
+		#update your code path here
+		$path = '/Users/rot/projects/GOL'
 		
-		irb -r './star.rb' -r './universe.rb'
+You can also adjust the constant values for the ROWs and COLs to create a bigger field.
+
+Launch interactive ruby with the boot.rb file:
+		
+		irb -r './boot.rb'
 
 Constellations.rb methods are available to universe.
 
@@ -46,15 +53,15 @@ Add constellations to the universe we just created at the specified grid point(s
 		universe.blinker_at(-5,-5)
 		universe.beacon_at(5,5)
 
-When you've seeded the universe with the above call:
+When you've seeded the universe with the above you can call the following method to evolve the universe once:
 
 		universe.evolve!
 
-To view formatted results call:
+To view the formatted results of the stars in the universe call:
 
 		universe.probe
 
-To watch the universe evolve on its own call:
+The fun part... to watch the universe evolve on its own call:
 
 		universe.monitor
 		
