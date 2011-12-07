@@ -62,8 +62,13 @@ Copy and paste one of the following example seeds:
 
 
 When you've seeded the universe with the above call:
+
 		universe.evolve!
+
 To view formatted results call:
+
 		universe.probe
+
 To watch the universe evolve on its own call:
+
 		universe.monitor
