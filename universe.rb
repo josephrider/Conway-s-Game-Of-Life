@@ -80,9 +80,9 @@ class Universe
   end
 
   def render_existence
-    (-12...ROWS).each do |row|
-      (-36...COLUMNS).each do |col|
-          pseudo_star = Star.new(Universe.new,row,col)
+    ROWS.downto(-12) do |row|
+      -36.upto(COLUMNS) do |col|
+          pseudo_star = Star.new(Universe.new,col,row)
           print @stars.include?(pseudo_star) ? '*' : ' '
       end
       puts
